@@ -30,7 +30,7 @@ let main = command() { (packageName: String, githubUsername: String) in
         "",
     ]
     let license = licenseStrings.joinWithSeparator("\n")
-    try fputs(license, fopen("./\(packageName)/LICENSE", mode: "w"))
+    try fputs(license, fopen("./\(packageName)/LICENSE", mode: .Write))
 
     // Write README.md file
     var readmeStrings = [String]()
@@ -62,7 +62,7 @@ let main = command() { (packageName: String, githubUsername: String) in
         "",
     ]
     let readme = readmeStrings.joinWithSeparator("\n")
-    try fputs(readme, fopen("./\(packageName)/README.md", mode: "w"))
+    try fputs(readme, fopen("./\(packageName)/README.md", mode: .Write))
 
     // Write .gitignore file
     var gitignoreStrings = [
@@ -71,7 +71,7 @@ let main = command() { (packageName: String, githubUsername: String) in
         "",
     ]
     let gitignore = gitignoreStrings.joinWithSeparator("\n")
-    try fputs(gitignore, fopen("./\(packageName)/.gitignore", mode: "w"))
+    try fputs(gitignore, fopen("./\(packageName)/.gitignore", mode: .Write))
 
     // Write Package.swift file
     var packageSwiftStrings = [
@@ -85,11 +85,11 @@ let main = command() { (packageName: String, githubUsername: String) in
         "",
     ]
     let packageSwift = packageSwiftStrings.joinWithSeparator("\n")
-    try fputs(packageSwift, fopen("./\(packageName)/Package.swift", mode: "w"))
+    try fputs(packageSwift, fopen("./\(packageName)/Package.swift", mode: .Write))
 
     // Write source file
     try mkdir("./\(packageName)/Sources")
-    try fputs("", fopen("./\(packageName)/Sources/\(packageName).swift", mode: "w"))
+    try fputs("", fopen("./\(packageName)/Sources/\(packageName).swift", mode: .Write))
 
     // Write Makefile file
     var makefileStrings = [
@@ -105,7 +105,7 @@ let main = command() { (packageName: String, githubUsername: String) in
     ]
 
     let makefile = makefileStrings.joinWithSeparator("\n")
-    try fputs(makefile, fopen("./\(packageName)/Makefile", mode: "w"))
+    try fputs(makefile, fopen("./\(packageName)/Makefile", mode: .Write))
 
     var editorconfigStrings = [
         "root = true",
@@ -123,7 +123,7 @@ let main = command() { (packageName: String, githubUsername: String) in
         "",
     ]
     let editorconfig = editorconfigStrings.joinWithSeparator("\n")
-    try fputs(editorconfig, fopen("./\(packageName)/.editorconfig", mode: "w"))
+    try fputs(editorconfig, fopen("./\(packageName)/.editorconfig", mode: .Write))
 }
 
 main.run()
